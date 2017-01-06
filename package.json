@@ -1,0 +1,23 @@
+{
+  "name": "docker-uptime",
+  "version": "1.0.0",
+  "description": "An app monitoring platform written in Node.js and deployed on Docker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developius/docker-uptime.git"
+  },
+  "author": "Finnian Anderson <finnian.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/developius/docker-uptime/issues"
+  },
+  "homepage": "https://github.com/developius/docker-uptime#readme",
+  "dependencies": {
+    "ping-monitor": "^0.1.6"
+  }
+}
