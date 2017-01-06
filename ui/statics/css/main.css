@@ -39,6 +39,7 @@ sidepane title {
 	text-transform: uppercase;
 	text-align: center;
 	line-height: 100px;
+	cursor: default;
 }
 
 sidepane input {
@@ -102,6 +103,7 @@ splash {
 	font-weight: 100;
 	text-transform: uppercase;
 	text-align: center;
+	cursor: default;
 }
 
 splash subh {
@@ -112,4 +114,15 @@ splash subh {
 	font-size: 18px;
 	font-weight: 300;
 	line-height: normal;
+	cursor: default;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
