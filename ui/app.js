@@ -2,10 +2,10 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 
-app.use(express.static('statics'));
+app.use(express.static(__dirname + '/statics'));
 
 app.get('/', function (req, res) {
-	fs.readFile('pages/index.html', 'utf-8', function (err, data) {
+	fs.readFile(__dirname + '/pages/index.html', 'utf-8', function (err, data) {
 		res.send(data);
 	});
 });
