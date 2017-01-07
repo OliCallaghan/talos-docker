@@ -4,10 +4,16 @@
 	<subh>A Joint Concept by Finnian Anderson and Oli Callaghan</subh>
 </splash>
 <sidepane>
-	<title class="noselect">Login</title>
-	<input type="text" placeholder="email" name="email" />
-	<input type="password" placeholder="password" name="password" />
-	<button>register</button><button>login</button>
+	{{#if user}}
+		<a href="/dashboard">dashboard</a>
+	{{else}}
+		<title class="noselect">Login</title>
+		<form method="POST" action="/login">
+			<input type="text" placeholder="email" name="email" />
+			<input type="password" placeholder="password" name="password" />
+			<button type="submit">login</button><a href="/signup">register</a>
+		</form>
+	{{/if}}
 	<p>
 		<!-- TODO: Needs Rewriting -->
 		Talos is a join concept developed by Oli Callaghan and Finnian Anderson, that monitors the uptime of sites, and is able to alert the monitor when the site goes down. It utilises Docker to create and destroy site health monitors, written in NodeJS, whilst also utilising Docker containers for the storage of user data, serving front-end files, and providing an interface for Alexa to read live updates on site health.
@@ -16,5 +22,5 @@
 		<!-- TODO: Needs Rewriting -->
 		Full blog posts explaining the design and development process are detailed on our blogs, with links available below.
 	</p>
-	<button class="blog-link" onclick="location.href='http://fxapi.co.uk';">finnian anderson</button><button class="blog_link" onclick="location.href='http://olicallaghan.com';">oli callaghan</button>
+	<a class="blog-link" href='http://fxapi.co.uk'>finnian anderson</a><a class="blog-link" href='http://olicallaghan.com'>oli callaghan</a>
 </sidepane>
