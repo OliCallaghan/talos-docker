@@ -2,9 +2,9 @@
   "name": "docker-uptime",
   "version": "1.0.0",
   "description": "An app monitoring platform written in Node.js and deployed on Docker",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node ui/app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/developius/docker-uptime#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.6",
     "ping-monitor": "^0.1.6"
   }
 }

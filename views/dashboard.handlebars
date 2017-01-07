@@ -1,0 +1,21 @@
+<sideline></sideline>
+<sidepane>
+	<!-- TODO: Dynamic Name -->
+	<me>{{ user.name }}</me>
+	<button id="new" style="font-family:sans-serif;font-weight:auto;">+</button>
+	<button id="stats"><i class="fa fa-area-chart" aria-hidden="true"></i></button>
+	<button id="notifications"><i class="fa fa-bell" aria-hidden="true"></i></button>
+	<button id="alexa"><i class="fa fa-amazon" aria-hidden="true"></i></button>
+	<button id="settings"><i class="fa fa-sliders" aria-hidden="true"></i></button>
+</sidepane>
+<siteslist>
+	<list>
+		<!-- TODO: Populate with Sites this User is Monitoring -->
+		{{#each sites}}
+			<monitor data-site="{{ id }}">
+				<header>{{ name }}</header>
+				<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+			</monitor>
+		{{/each}}
+	</list>
+</siteslist>

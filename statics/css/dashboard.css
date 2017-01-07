@@ -72,7 +72,7 @@ siteslist {
       margin-bottom: 30px; }
       siteslist list monitor:hover {
         box-shadow: inset 0 0 0 1px #073B5C, 0 0 5px #f2f2f2; }
-      siteslist list monitor title {
+      siteslist list monitor header {
         display: block;
         position: relative;
         top: 0px;
