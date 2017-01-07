@@ -1,0 +1,28 @@
+/* Common Styles */
+body {
+	background: #fff;
+	font-family: "acumin-pro-condensed";
+	color: #073B5C;
+	overflow: hidden;
+}
+
+sideline {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 30px;
+	height: 100%;
+	border-right: 0.5px solid #073B5C;
+	background: #50758C;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
