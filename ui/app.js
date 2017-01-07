@@ -10,6 +10,12 @@ app.get('/', function (req, res) {
 	});
 });
 
+app.get('/dashboard', function (req, res) {
+	fs.readFile(__dirname + '/pages/dashboard.html', 'utf-8', function (err, data) {
+		res.send(data);
+	});
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 });
