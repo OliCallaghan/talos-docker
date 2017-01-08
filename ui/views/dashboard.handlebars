@@ -11,12 +11,14 @@
 <siteslist>
 	<list>
 		<!-- TODO: Populate with Sites this User is Monitoring -->
-		{{#each sites}}
-			<monitor data-site="{{ id }}">
-				<header>{{ displayName }}</header>
-				<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-			</monitor>
-		{{/each}}
+		<div id="sites">
+			{{#each sites}}
+				<monitor data-site="{{ id }}">
+					<header>{{ displayName }}</header>
+					<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				</monitor>
+			{{/each}}
+		</div>
 		<!-- Template for New Monitor -->
 		<monitornew class="remove">
 			<header>
