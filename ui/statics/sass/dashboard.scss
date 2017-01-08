@@ -69,7 +69,7 @@ siteslist {
 		left: 0px;
 		width: calc(100% - 30px);
 
-		monitor {
+		monitor, monitornew {
 			display: block;
 			position: relative;
 			left: 0px;
@@ -119,6 +119,149 @@ siteslist {
 				&:hover {
 					background: #073B5C;
 					color: #fff;
+				}
+			}
+		}
+
+		monitornew {
+			cursor: default;
+			height: 150px;
+			box-shadow: inset 0 0 0 1px #073B5C, 0 0 5px #f2f2f2;
+			opacity: 1;
+			overflow: hidden;
+			margin-top:0;
+			@include prefix(transition, margin-top 0.5s ease-in-out, opacity 0.2s, margin-bottom 0.2s);
+
+			&.remove {
+				margin-top:-150px;
+				opacity: 0;
+				margin-bottom:0;
+			}
+
+			input {
+				display: block;
+				position: absolute;
+				top: 0;
+				width: calc(100% - 160px);
+				left: 0px;
+				padding: 0px;
+				margin: 0px;
+				outline: none;
+				border: none;
+				height: 100px;
+				box-shadow: inset 0 0 0 1px #073B5C, 0 0 5px #f2f2f2;
+				padding-left: 30px;
+				padding-right: 30px;
+				font-family: "acumin-pro-condensed";
+				font-weight: 100;
+				font-size: 24px;
+			}
+
+			button {
+				background: #073B5C;
+				color: #fff;
+				@include prefix(transition, background 0.2s, color 0.2s);
+
+				&:hover {
+					background: rgba(255,255,255,0);
+					color: #073B5C;
+				}
+			}
+
+			pollingrate {
+				position: absolute;
+				display: block;
+				left: 0px;
+				bottom: 0;
+				height: 50px;
+				width: 100%;
+
+				subcaption {
+					display: block;
+					position: absolute;
+					bottom: 0px;
+					right: 0;
+					padding-right: 17px;
+					font-family: "acumin-pro-condensed";
+					font-weight: 300;
+					line-height: 50px;
+					height: 50px;
+					font-size: 18px;
+
+					border-top:1px solid #444;
+					border-left:1px solid #444;
+
+					input {
+						background: none;
+						outline: none;
+						border: none;
+						box-shadow: none;
+						text-align: right;
+						margin: 0;
+						padding: 0;
+						font-size: 18px;
+						font-family: "acumin-pro-condensed";
+						position: relative;
+						float: left;
+						padding-right: 3px;
+						line-height: 50px;
+						height: 50px;
+						width: 50px;
+						font-weight: 100;
+					}
+
+					unit {
+						display: inline-block;
+						font-weight: 100;
+						cursor: text;
+					}
+				}
+			}
+
+			connectionapi {
+				display: block;
+				position: absolute;
+				top: 100px;
+				height: 100px;
+				line-height: 100px;
+				width: calc(100% - 60px);
+				padding-left: 30px;
+				padding-right: 30px;
+				overflow-x: scroll;
+				font-family: "source-code-pro";
+				font-weight: 300;
+			}
+
+			connectiontype {
+				display: block;
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				height: 50px;
+				width: 300px;
+
+				type, btn {
+					display: block;
+					float: left;
+					position: relative;
+					height: 100%;
+					width: 100px;
+					text-align: center;
+					color: #073B5C;
+					line-height: 50px;
+					cursor: pointer;
+					background: rgba(255,255,255,0);
+					@include prefix(transition, background 0.2s, color 0.2s);
+
+					&:hover {
+						background: #073B5C;
+						color: #fff;
+					}
+
+					&.selected {
+						background: #073B5C;
+						color: #fff;
+					}
 				}
 			}
 		}

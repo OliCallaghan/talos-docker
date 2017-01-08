@@ -11,11 +11,27 @@
 <siteslist>
 	<list>
 		<!-- TODO: Populate with Sites this User is Monitoring -->
+		<!-- Template for New Monitor -->
+		<monitornew class="remove">
+			<header>
+				<input id="new-name" type="text" placeholder="example.com" />
+			</header>
+			<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+			<pollingrate>
+				<subcaption><input id="pollingrate" name="pollingrate" type="text" placeholder="5" maxlength="5" /><unit>sec</unit> Polling Rate</subcaption>
+			</pollingrate>
+			<connectiontype>
+				<type class="selected">HTTP</type>
+				<btn>CANCEL</btn>
+			</connectiontype>
+		</monitornew>
 		{{#each user.sites}}
 			<monitor data-site="{{ id }}">
 				<header>{{ name }}</header>
-				<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				<button><i class="fa fa-angle-down" aria-hidden="true"></i></button>
 			</monitor>
 		{{/each}}
 	</list>
 </siteslist>
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<script src="/js/dashboard.js"></script>
