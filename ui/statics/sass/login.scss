@@ -1,4 +1,7 @@
 /* Styles Specific to Login Page */
+
+@import "_mixins";
+
 sidepane {
 	display: block;
 	position: absolute;
@@ -56,7 +59,8 @@ sidepane {
 		margin-top: 30px;
 		padding-top: 0px;
 		text-decoration: none;
-		-webkit-transition: background 0.2s, color 0.2s;
+		@include prefix(transition, background 0.2s, color 0.2s);
+		// -webkit-transition: background 0.2s, color 0.2s;
 		font-family: "acumin-pro-condensed";
 		font-weight: 100;
 		font-size: 18px;

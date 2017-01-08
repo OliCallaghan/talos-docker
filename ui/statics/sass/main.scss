@@ -1,4 +1,7 @@
 /* Common Styles */
+
+@import "_mixins";
+
 body {
 	background: #fff;
 	font-family: "acumin-pro-condensed";
@@ -15,6 +18,10 @@ sideline {
 	height: 100%;
 	border-right: 0.5px solid #073B5C;
 	background: #50758C;
+	@include prefix(transition, width .5s);
+	&:hover {
+		width: 60px;
+	}
 }
 
 .noselect {
