@@ -17,26 +17,26 @@
 				<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 			</monitor>
 		{{/each}}
+		<!-- Template for New Monitor -->
+		<monitornew class="remove">
+			<header>
+				<input id="new-name" type="text" placeholder="example.com" />
+			</header>
+			<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+			<pollingrate>
+				<subcaption><input id="pollingrate" name="pollingrate" type="text" placeholder="5" maxlength="5" /><unit>sec</unit> Polling Rate</subcaption>
+			</pollingrate>
+			<connectiontype>
+				<type class="selected">HTTP</type>
+				<btn>CANCEL</btn>
+			</connectiontype>
+		</monitornew>
+			
 	</list>
 </siteslist>
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
-	var socket = io();
 	var userID = "{{ user._id }}";
-	setInterval(function(){
-		socket.emit("refresh sites", userID, function(sites) {
-			console.log(sites);
-		});
-	}, 2000);
-	socket.emit("create site", {
-		user: userID,
-		refreshRate: 2,
-		url: "https://finnian.io/random"
-	}, function(success, site) {
-		if (success) {
-
-		} else {
-			alert(site) // this becomes the error message
-		}
-	})
 </script>
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<script src="/js/dashboard.js"></script>
