@@ -51,7 +51,7 @@ function generateReport(callback) {
 			else intro += "is"
 			report = intro + " down. " + report
 		}
-		report += " This report is current as of " + moment(sites[0].info.updatedAt).fromNow()
+		report += " This report is current as of " + moment().fromNow()
 		callback(report)
 	})
 }
