@@ -22,6 +22,19 @@ $(document).ready(function () {
 			});
 		}
 	});
+	$("monitornew button").on("click", function(){
+		socket.emit("create site", {
+			user: userID,
+			refreshRate: $('#pollingrate').val() || 5,
+			url: $("#new-name").val()
+		}, function(success, site) {
+			if (success) {
+				// site is the object with the infos
+			} else {
+				alert(site) // this becomes the error message
+			}
+		})
+	})
 });
 
 var socket = io();
@@ -30,14 +43,3 @@ setInterval(function(){
 		console.log(sites);
 	});
 }, 2000);
-socket.emit("create site", {
-	user: userID,
-	refreshRate: 2,
-	url: "https://finnian.io/random"
-}, function(success, site) {
-	if (success) {
-
-	} else {
-		alert(site) // this becomes the error message
-	}
-})

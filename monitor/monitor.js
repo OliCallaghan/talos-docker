@@ -46,7 +46,7 @@ function Me(user, website, interval, callback) {
 Me.prototype.displayName = function(URL) {
 	URL = url.parse(URL) // semantic, huh?
 	let displayName = URL.host
-	if (URL.pathname != "/") displayName += URL.pathname
+	if (URL.pathname != "/" && URL.pathname != "") displayName += URL.pathname
 	return displayName
 }
 

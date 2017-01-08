@@ -115,7 +115,7 @@ const site = require("./controllers/site")
 function displayName(URL) {
 	URL = url.parse(URL) // semantic, huh?
 	let displayName = URL.host
-	if (URL.pathname != "/") displayName += URL.pathname
+	if (URL.pathname != "/" && URL.pathname) displayName += URL.pathname
 	return displayName
 }
 
