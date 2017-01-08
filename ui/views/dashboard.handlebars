@@ -11,11 +11,32 @@
 <siteslist>
 	<list>
 		<!-- TODO: Populate with Sites this User is Monitoring -->
-		{{#each user.sites}}
+		{{#each sites}}
 			<monitor data-site="{{ id }}">
-				<header>{{ name }}</header>
+				<header>{{ displayName }}</header>
 				<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 			</monitor>
 		{{/each}}
 	</list>
 </siteslist>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+	var socket = io();
+	var userID = "{{ user._id }}";
+	setInterval(function(){
+		socket.emit("refresh sites", userID, function(sites) {
+			console.log(sites);
+		});
+	}, 2000);
+	socket.emit("create site", {
+		user: userID,
+		refreshRate: 2,
+		url: "https://finnian.io/random"
+	}, function(success, site) {
+		if (success) {
+
+		} else {
+			alert(site) // this becomes the error message
+		}
+	})
+</script>
