@@ -24,7 +24,6 @@ function generateReport(callback) {
 		     domains = []
 
 		if (sites.length) {
-			sites[0].info.status = "down"
 			for (let i = 0; i < sites.length; i++) {
 				let site = sites[i]
 				let message = ""
