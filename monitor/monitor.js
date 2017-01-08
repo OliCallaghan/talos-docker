@@ -44,9 +44,12 @@ function Me(user, website, interval, callback) {
 }
 
 Me.prototype.displayName = function(URL) {
+	if (URL.indexOf("http://") === -1 && URL.indexOf("https://") === -1) {
+		URL = "http://" + URL
+	}
 	URL = url.parse(URL) // semantic, huh?
 	let displayName = URL.host
-	if (URL.pathname != "/" && URL.pathname != "") displayName += URL.pathname
+	if (URL.pathname && URL.pathname != "/") displayName += URL.pathname
 	return displayName
 }
 
