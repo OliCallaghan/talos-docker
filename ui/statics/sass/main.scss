@@ -33,3 +33,10 @@ sideline {
             user-select: none; /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+	// stop ugly autofill colour
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
