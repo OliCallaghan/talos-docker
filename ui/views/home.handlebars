@@ -5,10 +5,10 @@
 </splash>
 <sidepane>
 	{{#if user}}
-		<header>Welcome back, {{user.name}}</header>
+		<header class="noselect return">Welcome back, {{user.name}}</header>
 		<a class="dashboard" href="/dashboard">dashboard</a>
 	{{else}}
-		<title class="noselect">Login</title>
+		<header class="noselect new">Login</header>
 		<form method="POST" action="/login">
 			<input type="text" placeholder="email" name="email" />
 			<input type="password" placeholder="password" name="password" />
