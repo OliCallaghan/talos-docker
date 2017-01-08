@@ -36,6 +36,8 @@ sidepane {
     font-weight: 100;
     font-size: 18px;
     color: #073B5C; }
+  sidepane .dashboard {
+    width: 100% !important; }
   sidepane button, sidepane a {
     display: inline-block;
     line-height: 70px;
