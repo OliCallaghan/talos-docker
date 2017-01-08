@@ -8,25 +8,9 @@ $(document).ready(function () {
 			$('monitornew').css('visibility', 'visible');
 
 			$('monitornew').removeClass('remove');
-
-			$('unit').click(function () {
-				$('#pollingrate').focus();
-			});
-
-			$('type').click(function () {
-				$('type').removeClass('selected');
-				$(this).addClass('selected');
-			});
-
-			$('btn').click(function () {
-				$(this).parent().parent().addClass('remove');
-				newmon = false;
-				setTimeout(function () {
-					$('monitornew').css('visibility', 'hidden');
-				}, 500);
-			});
 		}
 	});
+
 	$("monitornew button").on("click", function(){
 		socket.emit("create site", {
 			user: userID,
@@ -36,12 +20,34 @@ $(document).ready(function () {
 			if (success) {
 				console.log(site)
 				var $newSite = $("<monitor data-site='"+site.id+"'><header>" + site.displayName + "</header><button><i class='fa fa-angle-right' aria-hidden='true'></i></button>");
-				$newSite.appendTo("#sites");
+				$('monitornew').after($newSite);
+				$('monitornew').addClass('remove');
+				newmon = false;
+				setTimeout(function () {
+					$('monitornew').css('visibility', 'hidden');
+				}, 500);
 			} else {
 				alert(site) // this becomes the error message
 			}
 		})
-	})
+	});
+
+	$('unit').click(function () {
+		$('#pollingrate').focus();
+	});
+
+	$('type').click(function () {
+		$('type').removeClass('selected');
+		$(this).addClass('selected');
+	});
+
+	$('btn').click(function () {
+		$(this).parent().parent().addClass('remove');
+		newmon = false;
+		setTimeout(function () {
+			$('monitornew').css('visibility', 'hidden');
+		}, 500);
+	});
 });
 
 var socket = io();
@@ -50,7 +56,7 @@ setInterval(function(){
 		console.log(sites);
 	});
 }, 2000);
-socket.emit("create site", {
+/*socket.emit("create site", {
 	user: userID,
 	refreshRate: 2,
 	url: "https://finnian.io/random"
@@ -60,4 +66,4 @@ socket.emit("create site", {
 	} else {
 		alert(site) // this becomes the error message
 	}
-});
+});*/
