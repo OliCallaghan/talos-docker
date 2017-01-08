@@ -5,6 +5,8 @@ $(document).ready(function () {
 		if (!newmon) {
 			newmon = true;
 
+			$('monitornew').css('visibility', 'visible');
+
 			$('monitornew').removeClass('remove');
 
 			$('unit').click(function () {
@@ -19,6 +21,9 @@ $(document).ready(function () {
 			$('btn').click(function () {
 				$(this).parent().parent().addClass('remove');
 				newmon = false;
+				setTimeout(function () {
+					$('monitornew').css('visibility', 'hidden');
+				}, 500);
 			});
 		}
 	});
