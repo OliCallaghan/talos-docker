@@ -58,7 +58,8 @@ var userController = require('./controllers/user');
 app.get('/', function (req, res) {
 	res.render('home', {
 		title: 'Talos',
-		user: req.user
+		user: req.user,
+		css: "login"
 	});
 });
 
@@ -78,7 +79,8 @@ app.get('/dashboard', function (req, res) {
 		];
 		res.render('dashboard', {
 			title: 'Talos - Dashboard',
-			user: req.user
+			user: req.user,
+			css: "dashboard"
 		});
 	} else {
 		res.redirect("/login")
