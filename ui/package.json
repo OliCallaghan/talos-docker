@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/developius/docker-uptime.git"
   },
-  "author": "Finnian Anderson <finnian.io>",
+  "author": "Finnian Anderson <finnian.io>, Oli Callaghan <olicallaghan.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/developius/docker-uptime/issues"
