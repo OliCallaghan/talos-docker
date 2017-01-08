@@ -85,7 +85,7 @@ app.get('/dashboard', function (req, res) {
 	} else {
 		res.redirect("/login")
 	}
-	
+
 });
 
 
@@ -93,7 +93,7 @@ app.get('/dashboard', function (req, res) {
 // app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 // app.put('/account', userController.ensureAuthenticated, userController.accountPut);
 // app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
-app.get('/signup', userController.signupGet);
+// app.get('/signup', userController.signupGet);
 app.post('/signup', userController.signupPost);
 app.get('/login', userController.loginGet);
 app.post('/login', userController.loginPost);

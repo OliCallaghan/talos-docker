@@ -1,4 +1,12 @@
-<sideline></sideline>
+<sideline>
+	<header class="inactive noselect new" id="register">Register</header>
+	<form method="POST" id="register" action="/signup" autocomplete="off" spellcheck="false" class="inactive">
+		<input id="email" type="text" placeholder="email" name="email" spellcheck="false" autocomplete="off" />
+		<input type="text" placeholder="name" name="name" spellcheck="false" autocomplete="off" />
+		<input id="password" type="password" placeholder="password" name="password" spellcheck="false" autocomplete="off" />
+		<a id="cancel">cancel</a><button type="submit">register</button>
+	</form>
+</sideline>
 <splash class="noselect">
 	Talos
 	<subh>A Joint Concept by Finnian Anderson and Oli Callaghan</subh>
@@ -10,9 +18,9 @@
 	{{else}}
 		<header class="noselect new">Login</header>
 		<form method="POST" action="/login">
-			<input type="text" placeholder="email" name="email" />
-			<input type="password" placeholder="password" name="password" />
-			<button type="submit">login</button><a href="/signup">register</a>
+			<input type="text" placeholder="email" name="email" id="loginemail" />
+			<input type="password" placeholder="password" name="password" id="loginpassword" />
+			<button type="submit">login</button><a id="signup">register</a>
 		</form>
 	{{/if}}
 	<p>
@@ -25,3 +33,30 @@
 	</p>
 	<a class="blog-link" href='http://fxapi.co.uk'>finnian anderson</a><a class="blog-link" href='http://olicallaghan.com'>oli callaghan</a>
 </sidepane>
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function () {
+		$('a#signup').click(function () {
+			$('sidepane').addClass('inactive');
+			$('sideline').addClass('inactive');
+			$('splash').addClass('inactive');
+			$('form#register').removeClass('inactive');
+			$('header#register').removeClass('inactive');
+			$('input#email').focus();
+			$('input#email').val($('input#loginemail').val());
+			$('input#password').val($('input#loginpassword').val());
+		});
+
+		$('a#cancel').click(function () {
+			$('sidepane').removeClass('inactive');
+			$('sideline').removeClass('inactive');
+			$('splash').removeClass('inactive');
+			$('form#register').addClass('inactive');
+			$('header#register').addClass('inactive');
+			$('input#loginemail').focus();
+			$('input#loginemail').val($('input#email').val());
+			$('input#loginpassword').val($('input#password').val());
+		});
+	});
+</script>

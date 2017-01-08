@@ -14,13 +14,20 @@ sideline {
   height: 100%;
   border-right: 0.5px solid #073B5C;
   background: #50758C;
-  -webkit-transition: width 0.5s;
-  -ms-transition: width 0.5s;
-  -moz-transition: width 0.5s;
-  -o-transition: width 0.5s;
-  transition: width 0.5s; }
-  sideline:hover {
-    width: 60px; }
+  overflow: hidden;
+  -webkit-transition: width 0.5s ease-in-out 0.1s;
+  -ms-transition: width 0.5s ease-in-out 0.1s;
+  -moz-transition: width 0.5s ease-in-out 0.1s;
+  -o-transition: width 0.5s ease-in-out 0.1s;
+  transition: width 0.5s ease-in-out 0.1s;
+  /* Tried to keep it but I think it has to go sorry :( */
+  /*
+  	&:not(.inactive):hover {
+  		width: 35px;
+  	}
+  */ }
+  sideline.inactive {
+    width: 363.5px; }
 
 .noselect {
   -webkit-touch-callout: none;

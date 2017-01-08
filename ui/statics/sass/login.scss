@@ -1,7 +1,6 @@
-/* Styles Specific to Login Page */
-
 @import "_mixins";
 
+/* Styles Specific to Login Page */
 sidepane {
 	display: block;
 	position: absolute;
@@ -14,6 +13,14 @@ sidepane {
 	width: 300px;
 	border-bottom:none;
 	box-shadow: 0px 0px 10px #f2f2f2;
+	opacity: 1;
+	@include prefix(transition, left 0.5s ease-out 0.3s, opacity 0.1s ease-out 0.3s);
+
+	&.inactive {
+		left:-400px;
+		opacity: 0;
+		@include prefix(transition, left 0.5s ease-in 0s, opacity 0.1s ease-in 0.1s);
+	}
 
 	header {
 		display: block;
@@ -64,8 +71,7 @@ sidepane {
 		margin-top: 30px;
 		padding-top: 0px;
 		text-decoration: none;
-		@include prefix(transition, background 0.2s, color 0.2s);
-		// -webkit-transition: background 0.2s, color 0.2s;
+		-webkit-transition: background 0.2s, color 0.2s;
 		font-family: "acumin-pro-condensed";
 		font-weight: 100;
 		font-size: 18px;
@@ -82,6 +88,108 @@ sidepane {
 		margin-right: 30px;
 		margin-top: 30px;
 		margin-bottom: 30px;
+	}
+}
+
+sideline {
+	form {
+		opacity: 1;
+		@include prefix(transition, opacity 0.5s ease-in-out 0.4s);
+
+		&.inactive {
+			opacity: 0;
+			@include prefix(transition, opacity 0.5s ease-in-out 0s);
+		}
+	}
+
+	header {
+		display: block;
+		position: relative;
+		top: 0px;
+		width: 100%;
+		height: 100px;
+		font-size: 24px;
+		font-weight: 100;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 100px;
+		cursor: default;
+		color: #fff;
+		opacity: 1;
+		@include prefix(transition, opacity 0.5s ease-in-out 0.3s);
+
+		&.inactive {
+			opacity: 0;
+			@include prefix(transition, opacity 0.5s ease-in-out 0s);
+		}
+	}
+
+	input {
+		position: relative;
+		margin: 0px;
+		height: 70px;
+		width: 100%;
+		padding: 0px;
+		outline: none;
+		border: none;
+		text-align: center;
+		font-family: "acumin-pro-condensed";
+		font-weight: 100;
+		font-size: 18px;
+		background: none;
+		color: #fff;
+		@include prefix(transition, background 0.2s);
+
+		&::-webkit-input-placeholder {
+		   color: #fff;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+		   color: #fff;
+		}
+
+		&::-moz-placeholder {  /* Firefox 19+ */
+		   color: #fff;
+		}
+
+		&:-ms-input-placeholder {
+		   color: #fff;
+		}
+
+		&:focus {
+			background: #073B5C;
+		}
+	}
+
+	.dashboard {
+		margin-top:0px;
+		width: 100%;
+	}
+
+	button, a {
+		display: inline-block;
+		line-height: 70px;
+		text-align: center;
+		position: relative;
+		width: 50%;
+		height: 70px;
+		cursor: pointer;
+		background: #073B5C;
+		color: #fff;
+		border: none;
+		outline: none;
+		margin-top: 30px;
+		padding-top: 0px;
+		text-decoration: none;
+		-webkit-transition: background 0.2s, color 0.2s;
+		font-family: "acumin-pro-condensed";
+		font-weight: 100;
+		font-size: 18px;
+
+		&:hover {
+			background: #fff;
+			color: #073B5C;
+		}
 	}
 }
 

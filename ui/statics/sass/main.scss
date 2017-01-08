@@ -18,10 +18,20 @@ sideline {
 	height: 100%;
 	border-right: 0.5px solid #073B5C;
 	background: #50758C;
-	@include prefix(transition, width .5s);
-	&:hover {
-		width: 60px;
+	overflow: hidden;
+	@include prefix(transition, width 0.5s ease-in-out 0.1s);
+
+	&.inactive {
+		width: 363.5px;
 	}
+
+	/* Tried to keep it but I think it has to go sorry :( */
+	/*
+		&:not(.inactive):hover {
+			width: 35px;
+		}
+	*/
+
 }
 
 .noselect {

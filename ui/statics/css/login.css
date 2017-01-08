@@ -10,7 +10,21 @@ sidepane {
   height: calc(100% - 30.5px);
   width: 300px;
   border-bottom: none;
-  box-shadow: 0px 0px 10px #f2f2f2; }
+  box-shadow: 0px 0px 10px #f2f2f2;
+  opacity: 1;
+  -webkit-transition: left 0.5s ease-out 0.3s, opacity 0.1s ease-out 0.3s;
+  -ms-transition: left 0.5s ease-out 0.3s, opacity 0.1s ease-out 0.3s;
+  -moz-transition: left 0.5s ease-out 0.3s, opacity 0.1s ease-out 0.3s;
+  -o-transition: left 0.5s ease-out 0.3s, opacity 0.1s ease-out 0.3s;
+  transition: left 0.5s ease-out 0.3s, opacity 0.1s ease-out 0.3s; }
+  sidepane.inactive {
+    left: -400px;
+    opacity: 0;
+    -webkit-transition: left 0.5s ease-in 0s, opacity 0.1s ease-in 0.1s;
+    -ms-transition: left 0.5s ease-in 0s, opacity 0.1s ease-in 0.1s;
+    -moz-transition: left 0.5s ease-in 0s, opacity 0.1s ease-in 0.1s;
+    -o-transition: left 0.5s ease-in 0s, opacity 0.1s ease-in 0.1s;
+    transition: left 0.5s ease-in 0s, opacity 0.1s ease-in 0.1s; }
   sidepane header {
     display: block;
     position: relative;
@@ -55,10 +69,6 @@ sidepane {
     padding-top: 0px;
     text-decoration: none;
     -webkit-transition: background 0.2s, color 0.2s;
-    -ms-transition: background 0.2s, color 0.2s;
-    -moz-transition: background 0.2s, color 0.2s;
-    -o-transition: background 0.2s, color 0.2s;
-    transition: background 0.2s, color 0.2s;
     font-family: "acumin-pro-condensed";
     font-weight: 100;
     font-size: 18px; }
@@ -71,6 +81,103 @@ sidepane {
     margin-right: 30px;
     margin-top: 30px;
     margin-bottom: 30px; }
+
+sideline form {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out 0.4s;
+  -ms-transition: opacity 0.5s ease-in-out 0.4s;
+  -moz-transition: opacity 0.5s ease-in-out 0.4s;
+  -o-transition: opacity 0.5s ease-in-out 0.4s;
+  transition: opacity 0.5s ease-in-out 0.4s; }
+  sideline form.inactive {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out 0s;
+    -ms-transition: opacity 0.5s ease-in-out 0s;
+    -moz-transition: opacity 0.5s ease-in-out 0s;
+    -o-transition: opacity 0.5s ease-in-out 0s;
+    transition: opacity 0.5s ease-in-out 0s; }
+sideline header {
+  display: block;
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100px;
+  font-size: 24px;
+  font-weight: 100;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 100px;
+  cursor: default;
+  color: #fff;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out 0.3s;
+  -ms-transition: opacity 0.5s ease-in-out 0.3s;
+  -moz-transition: opacity 0.5s ease-in-out 0.3s;
+  -o-transition: opacity 0.5s ease-in-out 0.3s;
+  transition: opacity 0.5s ease-in-out 0.3s; }
+  sideline header.inactive {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s ease-in-out 0s;
+    -ms-transition: opacity 0.5s ease-in-out 0s;
+    -moz-transition: opacity 0.5s ease-in-out 0s;
+    -o-transition: opacity 0.5s ease-in-out 0s;
+    transition: opacity 0.5s ease-in-out 0s; }
+sideline input {
+  position: relative;
+  margin: 0px;
+  height: 70px;
+  width: 100%;
+  padding: 0px;
+  outline: none;
+  border: none;
+  text-align: center;
+  font-family: "acumin-pro-condensed";
+  font-weight: 100;
+  font-size: 18px;
+  background: none;
+  color: #fff;
+  -webkit-transition: background 0.2s;
+  -ms-transition: background 0.2s;
+  -moz-transition: background 0.2s;
+  -o-transition: background 0.2s;
+  transition: background 0.2s; }
+  sideline input::-webkit-input-placeholder {
+    color: #fff; }
+  sideline input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff; }
+  sideline input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff; }
+  sideline input:-ms-input-placeholder {
+    color: #fff; }
+  sideline input:focus {
+    background: #073B5C; }
+sideline .dashboard {
+  margin-top: 0px;
+  width: 100%; }
+sideline button, sideline a {
+  display: inline-block;
+  line-height: 70px;
+  text-align: center;
+  position: relative;
+  width: 50%;
+  height: 70px;
+  cursor: pointer;
+  background: #073B5C;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-top: 30px;
+  padding-top: 0px;
+  text-decoration: none;
+  -webkit-transition: background 0.2s, color 0.2s;
+  font-family: "acumin-pro-condensed";
+  font-weight: 100;
+  font-size: 18px; }
+  sideline button:hover, sideline a:hover {
+    background: #fff;
+    color: #073B5C; }
 
 .blog-link {
   margin-top: 0px; }
