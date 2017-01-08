@@ -146,7 +146,7 @@ io.on("connection", function(socket) {
 			site.create(params, function(err, site) {
 				if (err) throw err
 				if (site.duplicate) callback(false, "Duplicate monitor detected")
-				else callback(site)
+				else callback(true, site)
 			})
 		} else {
 			callback(false, "Invalid parameters passed")

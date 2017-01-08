@@ -29,7 +29,9 @@ $(document).ready(function () {
 			url: $("#new-name").val()
 		}, function(success, site) {
 			if (success) {
-				// site is the object with the infos
+				console.log(site)
+				var $newSite = $("<monitor data-site='"+site.id+"'><header>" + site.displayName + "</header><button><i class='fa fa-angle-right' aria-hidden='true'></i></button>");
+				$newSite.appendTo("#sites");
 			} else {
 				alert(site) // this becomes the error message
 			}
