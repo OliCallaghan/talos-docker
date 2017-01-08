@@ -36,7 +36,10 @@ sidepane {
     font-weight: 100;
     font-size: 18px;
     color: #073B5C; }
-  sidepane button {
+  sidepane button, sidepane a {
+    display: inline-block;
+    line-height: 70px;
+    text-align: center;
     position: relative;
     width: 50%;
     height: 70px;
@@ -46,11 +49,13 @@ sidepane {
     border: none;
     outline: none;
     margin-top: 30px;
+    padding-top: 0px;
+    text-decoration: none;
     -webkit-transition: background 0.2s, color 0.2s;
     font-family: "acumin-pro-condensed";
     font-weight: 100;
     font-size: 18px; }
-    sidepane button:hover {
+    sidepane button:hover, sidepane a:hover {
       background: #073B5C;
       color: #fff; }
   sidepane p {

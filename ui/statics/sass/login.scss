@@ -41,7 +41,10 @@ sidepane {
 		color: #073B5C;
 	}
 
-	button {
+	button, a {
+		display: inline-block;
+		line-height: 70px;
+		text-align: center;
 		position: relative;
 		width: 50%;
 		height: 70px;
@@ -51,6 +54,8 @@ sidepane {
 		border: none;
 		outline: none;
 		margin-top: 30px;
+		padding-top: 0px;
+		text-decoration: none;
 		-webkit-transition: background 0.2s, color 0.2s;
 		font-family: "acumin-pro-condensed";
 		font-weight: 100;
