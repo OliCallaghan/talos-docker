@@ -11,6 +11,12 @@
 <siteslist>
 	<list>
 		<!-- TODO: Populate with Sites this User is Monitoring -->
+		{{#each sites}}
+			<monitor data-site="{{ id }}">
+				<header>{{ displayName }}</header>
+				<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+			</monitor>
+		{{/each}}
 		<!-- Template for New Monitor -->
 		<monitornew class="remove">
 			<header>
@@ -25,13 +31,12 @@
 				<btn>CANCEL</btn>
 			</connectiontype>
 		</monitornew>
-		{{#each user.sites}}
-			<monitor data-site="{{ id }}">
-				<header>{{ name }}</header>
-				<button><i class="fa fa-angle-down" aria-hidden="true"></i></button>
-			</monitor>
-		{{/each}}
+			
 	</list>
 </siteslist>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+	var userID = "{{ user._id }}";
+</script>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <script src="/js/dashboard.js"></script>

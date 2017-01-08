@@ -1,16 +1,18 @@
 const Monitor = require('ping-monitor')
 const mongoose = require('mongoose')
 const Site = require("./controllers/site")
+const url = require('url')
 
-function Me(website, interval, callback) {
+function Me(user, website, interval, callback) {
 	let self = this
 	self.interval = interval
 
 	Site.create({
-		user: mongoose.Schema.ObjectId("587133e8761cd6038fec5876"),
+		user: mongoose.Schema.ObjectId(user),
 		container: 1,
 		refreshRate: interval / 60,
 		url: website,
+		displayName: this.displayName(website),
 		info: {
 			latency: 0,
 			updatedAt: Date.now(),
@@ -39,6 +41,13 @@ function Me(website, interval, callback) {
 	this.monitor.on('error', function (res) {
 		self.updateSiteInfo(res, "down")
 	})
+}
+
+Me.prototype.displayName = function(URL) {
+	URL = url.parse(URL) // semantic, huh?
+	let displayName = URL.host
+	if (URL.pathname != "/") displayName += URL.pathname
+	return displayName
 }
 
 Me.prototype.updateSiteInfo = function(res, status) {

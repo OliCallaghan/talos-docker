@@ -1,5 +1,6 @@
 var fs = require('fs');
 var express = require('express');
+var http = require("http");
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var methodOverride = require('method-override');
@@ -8,7 +9,9 @@ var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('express-flash');
+const url = require('url')
 
+var ObjectId = mongoose.Types.ObjectId;
 
 var exphbs  = require('express-handlebars');
 var app = express();
@@ -65,23 +68,15 @@ app.get('/', function (req, res) {
 
 app.get('/dashboard', function (req, res) {
 	if (req.user) { // user is logged in
-		req.user.sites = [ // fake some sites for the time being
-			{
-				id: 1,
-				name: "finnian.io"
-			}, {
-				id: 2,
-				name: "fxapi.co.uk"
-			}, {
-				id: 3,
-				name: "olicallaghan.com"
-			},
-		];
-		res.render('dashboard', {
-			title: 'Talos - Dashboard',
-			user: req.user,
-			css: "dashboard"
-		});
+		Site.find({ user: ObjectId(req.user._id) }, function(err, sites){
+			if (err) throw err
+			res.render('dashboard', {
+				title: 'Talos - Dashboard',
+				user: req.user,
+				sites: sites,
+				css: "dashboard"
+			});
+		})
 	} else {
 		res.redirect("/login")
 	}
@@ -103,6 +98,55 @@ app.get('/reset/:token', userController.resetGet);
 app.post('/reset/:token', userController.resetPost);
 app.get('/logout', userController.logout);
 
-app.listen(3000, function () {
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+server.listen(3000, function (){
 	console.log('Talos listening on port 3000!')
+});
+
+io.engine.ws = new (require('uws').Server)({
+	noServer: true,
+	perMessageDeflate: false
+});
+
+const Site = require("./models/Site")
+const site = require("./controllers/site")
+
+function displayName(URL) {
+	URL = url.parse(URL) // semantic, huh?
+	let displayName = URL.host
+	if (URL.pathname != "/") displayName += URL.pathname
+	return displayName
+}
+
+io.on("connection", function(socket) {
+	socket.on("refresh sites", function(user, callback) {
+		Site.find({ user: ObjectId(user) }, function(err, sites) {
+			if (err) throw err
+			callback(sites)
+		})
+	})
+
+	socket.on("create site", function(params, callback) {
+		params.info = {
+			latency: 0,
+			updatedAt: Date.now(),
+			statusCode: 0,
+			statusMessage: "",
+			status: ""
+		}
+		params.displayName = displayName(params.url)
+		params.container = 1 // need to stop being hardcoded
+		params.user = ObjectId(params.user)
+		params.refresRate = params.refresRate / 60
+		if (params.url && params.user && params.refreshRate) {
+			site.create(params, function(err, site) {
+				if (err) throw err
+				if (site.duplicate) callback(false, "Duplicate monitor detected")
+				else callback(site)
+			})
+		} else {
+			callback(false, "Invalid parameters passed")
+		}
+	})
 });

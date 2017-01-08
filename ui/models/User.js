@@ -15,8 +15,7 @@ var userSchema = new mongoose.Schema({
 	password: String,
 	passwordResetToken: String,
 	passwordResetExpires: Date,
-	vk: String,
-	sites: Array
+	vk: String
 }, schemaOptions);
 
 userSchema.pre('save', function(next) {

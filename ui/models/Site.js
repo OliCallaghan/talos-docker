@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/talos')
 
 const Schema = mongoose.Schema
 const ObjectId = Schema.ObjectId

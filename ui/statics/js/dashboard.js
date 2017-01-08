@@ -23,3 +23,21 @@ $(document).ready(function () {
 		}
 	});
 });
+
+var socket = io();
+setInterval(function(){
+	socket.emit("refresh sites", userID, function(sites) {
+		console.log(sites);
+	});
+}, 2000);
+socket.emit("create site", {
+	user: userID,
+	refreshRate: 2,
+	url: "https://finnian.io/random"
+}, function(success, site) {
+	if (success) {
+
+	} else {
+		alert(site) // this becomes the error message
+	}
+})
