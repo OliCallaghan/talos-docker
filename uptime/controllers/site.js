@@ -46,10 +46,12 @@ exports.delete = function(id, callback) {
 exports.update = function(id, params, callback) {
 	Site.findById(id, function(err, site) {
 		if (site) {
-			site.user = params.user
-			site.container = params.container
-			site.refreshRate = params.refreshRate
-			site.info = params.info
+			for (let key in params) {
+				if (!params.hasOwnProperty(key)) continue
+				else {
+					site[key] = params[key]
+				}
+			}
 			site.save(function(err) {
 				callback(err, site)
 			})
