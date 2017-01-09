@@ -29,7 +29,8 @@
 			{{#each sites}}
 				<monitor data-site="{{ id }}">
 					<header>{{ displayName }}</header>
-					<button><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+					<button id="dropdown"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+					<button id="remove"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				</monitor>
 			{{/each}}
 		</div>

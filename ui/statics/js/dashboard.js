@@ -31,9 +31,10 @@ $(document).ready(function () {
 		}, function(success, site) {
 			if (success) {
 				console.log(site)
-				var $newSite = $("<monitor data-site='"+site.id+"'><header>" + site.displayName + "</header><button><i class='fa fa-angle-right' aria-hidden='true'></i></button>");
+				var $newSite = $("<monitor data-site='"+site.id+"'><header>" + site.displayName + "</header><button id='dropdown'><i class='fa fa-angle-down' aria-hidden='true'></i></button><button id='remove'><i class='fa fa-trash' aria-hidden='true'></i></button>");
 				$('monitornew').after($newSite);
 				$('monitornew').addClass('remove');
+				bindMonitorBehaviour();
 				newmon = false;
 				setTimeout(function () {
 					$('monitornew').css('visibility', 'hidden');
@@ -65,6 +66,32 @@ $(document).ready(function () {
 			$('monitornew').css('visibility', 'hidden');
 		}, 500);
 	});
+
+	function bindMonitorBehaviour() {
+		$('monitor').children('#dropdown').click(function () {
+			$(this).parent().toggleClass('extend');
+			$(this).toggleClass('selected');
+		});
+
+		$('button#remove').off('click');
+
+		$('button#remove').click(function () {
+			var msg = "confirm"
+			if ($(this).text() == msg) {
+				// TODO: Delete Element
+				alert('delet this');
+			} else {
+				$(this).text(msg);
+				$(this).addClass('marked');
+				setTimeout(function () {
+					$('button.marked').html(`<i class="fa fa-trash" aria-hidden="true"></i>`);
+					$('button.marked').removeClass('marked');
+				}, 1000);
+			}
+		});
+	}
+
+	bindMonitorBehaviour();
 });
 
 var socket = io();

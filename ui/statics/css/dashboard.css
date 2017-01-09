@@ -11,7 +11,7 @@ sidepane {
   width: 100px;
   border-bottom: none;
   box-shadow: 0px 0px 10px #f2f2f2;
-  overflow-y: hidden; }
+  overflow-y: scroll; }
   sidepane me {
     display: block;
     position: relative;
@@ -86,6 +86,7 @@ siteslist {
         top: 0px;
         bottom: 0px;
         left: 0px;
+        overflow-x: scroll;
         height: 100%;
         font-family: "acumin-pro-condensed";
         font-weight: 100;
@@ -114,6 +115,45 @@ siteslist {
         siteslist list monitor button:hover, siteslist list monitornew button:hover {
           background: #073B5C;
           color: #fff; }
+    siteslist list monitor {
+      overflow: hidden;
+      -webkit-transition: height 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+      -ms-transition: height 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+      -moz-transition: height 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+      -o-transition: height 0.5s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition: height 0.5s ease-in-out, box-shadow 0.15s ease-in-out; }
+      siteslist list monitor.extend {
+        height: 200px;
+        box-shadow: inset 0 0 0 1px #073B5C, 0 0 5px #f2f2f2; }
+      siteslist list monitor header {
+        width: calc(100% - 160px);
+        padding-right: 30px; }
+      siteslist list monitor button {
+        font-family: "acumin-pro-condensed";
+        font-weight: 100; }
+        siteslist list monitor button#remove {
+          top: 100px;
+          background: #073B5C;
+          color: #fff; }
+        siteslist list monitor button#remove:hover {
+          color: #073B5C;
+          background: #fff;
+          box-shadow: inset 0 0 0 1px #073B5C; }
+        siteslist list monitor button i {
+          -webkit-transition: -webkit-transform 0.2s ease-in-out;
+          -ms-transition: -webkit-transform 0.2s ease-in-out;
+          -moz-transition: -webkit-transform 0.2s ease-in-out;
+          -o-transition: -webkit-transform 0.2s ease-in-out;
+          transition: -webkit-transform 0.2s ease-in-out; }
+        siteslist list monitor button.selected {
+          background: #073B5C;
+          color: #fff; }
+          siteslist list monitor button.selected i {
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg); }
     siteslist list monitornew {
       visibility: hidden;
       cursor: default;
