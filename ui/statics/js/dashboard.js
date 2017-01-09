@@ -8,10 +8,22 @@ $(document).ready(function () {
 			$('monitornew').css('visibility', 'visible');
 
 			$('monitornew').removeClass('remove');
+			$(document).keyup(function(e) {
+				if (e.keyCode === 27) { // escape
+					$("monitornew").addClass('remove');
+					newmon = false;
+					setTimeout(function () {
+						$('monitornew').css('visibility', 'hidden');
+					}, 500);
+				}
+				if (e.keyCode === 13) { // enter
+					createSite();
+				}
+			});
 		}
 	});
 
-	$("monitornew button").on("click", function(){
+	function createSite() {
 		socket.emit("create site", {
 			user: userID,
 			refreshRate: $('#pollingrate').val() || 5,
@@ -25,11 +37,16 @@ $(document).ready(function () {
 				newmon = false;
 				setTimeout(function () {
 					$('monitornew').css('visibility', 'hidden');
+					$("#new-name").val("");
 				}, 500);
 			} else {
 				alert(site) // this becomes the error message
 			}
-		})
+		});
+	}
+
+	$("monitornew button").on("click", function(){
+		createSite();
 	});
 
 	$('unit').click(function () {
