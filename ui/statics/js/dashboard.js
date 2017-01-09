@@ -1,5 +1,20 @@
-$(document).ready(function () {
+$(function () {
 	var newmon = false;
+
+	$(document).keyup(function(e) {
+		if (newmon) {
+			if (e.keyCode === 27) { // escape
+				$("monitornew").addClass('remove');
+				newmon = false;
+				setTimeout(function () {
+					$('monitornew').css('visibility', 'hidden');
+				}, 500);
+			}
+			if (e.keyCode === 13) { // enter
+				createSite();
+			}
+		}
+	});
 
 	$('#new').click(function () {
 		if (!newmon) {
@@ -8,18 +23,6 @@ $(document).ready(function () {
 			$('monitornew').css('visibility', 'visible');
 
 			$('monitornew').removeClass('remove');
-			$(document).keyup(function(e) {
-				if (e.keyCode === 27) { // escape
-					$("monitornew").addClass('remove');
-					newmon = false;
-					setTimeout(function () {
-						$('monitornew').css('visibility', 'hidden');
-					}, 500);
-				}
-				if (e.keyCode === 13) { // enter
-					createSite();
-				}
-			});
 		}
 	});
 
