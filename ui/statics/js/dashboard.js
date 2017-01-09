@@ -68,12 +68,13 @@ $(document).ready(function () {
 	});
 
 	function bindMonitorBehaviour() {
+		$('button#remove').off('click');
+		$('monitor').children('#dropdown').off('click');
+
 		$('monitor').children('#dropdown').click(function () {
 			$(this).parent().toggleClass('extend');
 			$(this).toggleClass('selected');
 		});
-
-		$('button#remove').off('click');
 
 		$('button#remove').click(function () {
 			var msg = "confirm"
