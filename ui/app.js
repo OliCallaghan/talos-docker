@@ -15,8 +15,14 @@ var ObjectId = mongoose.Types.ObjectId;
 
 var exphbs  = require('express-handlebars');
 var app = express();
+const config = require("./config/config")
 
-mongoose.connect("localhost/talos");
+if (config.docker) {
+	mongoose.connect('mongodb://'+process.env.MONGO_PORT_27017_TCP_ADDR+':'+process.env.MONGO_PORT_27017_TCP_PORT+'/talos')
+} else {
+	mongoose.connect('localhost/talos')
+}
+
 mongoose.connection.on('error', function() {
 	console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
 	process.exit(1);

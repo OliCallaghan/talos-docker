@@ -1,0 +1,9 @@
+FROM node:latest
+
+ADD alexa/ /alexa
+WORKDIR /alexa
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]

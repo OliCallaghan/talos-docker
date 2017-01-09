@@ -1,5 +1,11 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/talos')
+const config = require("../config")
+
+if (config.docker) {
+	mongoose.connect('mongodb://'+process.env.MONGO_PORT_27017_TCP_ADDR+':'+process.env.MONGO_PORT_27017_TCP_PORT+'/talos')
+} else {
+	mongoose.connect('localhost/talos')
+}
 
 const Schema = mongoose.Schema
 const ObjectId = Schema.ObjectId

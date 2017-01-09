@@ -8,6 +8,13 @@ An app monitoring platform written in Node.js and deployed on Docker
 3. Install NPM modules `npm i`
 4. Run the code `npm start`
 
-# Notes
-- To monitor website: [qawemlilo/node-monitor](https://github.com/qawemlilo/node-monitor)
-- Docker API wrapper for Node.js: [apocas/dockerode](https://github.com/apocas/dockerode)
+# Docker builds
+UI: `docker build -t talos-ui . -f Dockerfile.ui`
+Monitor: `docker build -t talos-monitor . -f Dockerfile.monitor`
+Alexa: `docker build -t talos-alexa . -f Dockerfile.alexa`
+
+# Docker runs
+Mongo:  `docker run --rm --name talos-mongo mongo`
+UI: `docker run -d -p 3000:3000 --name talos-ui --link talos-mongo:mongo talos-ui`
+Monitor: `docker run -d --name talos-monitor --link talos-mongo:mongo talos-monitor`
+Alexa: `docker run -d -p 3001:3000 --name talos-alexa --link talos-mongo:mongo talos-alexa`

@@ -1,0 +1,7 @@
+FROM node:latest
+
+ADD monitor/ /monitor
+WORKDIR /monitor
+RUN npm install
+
+CMD ["node", "test.js"]
