@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-const config = require("../config")
 
-if (config.docker) {
+if (process.env.MONGO_PORT_27017_TCP_ADDR && process.env.MONGO_PORT_27017_TCP_PORT) {
 	mongoose.connect('mongodb://'+process.env.MONGO_PORT_27017_TCP_ADDR+':'+process.env.MONGO_PORT_27017_TCP_PORT+'/talos')
 } else {
 	mongoose.connect('localhost/talos')

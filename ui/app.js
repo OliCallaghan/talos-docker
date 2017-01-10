@@ -15,9 +15,8 @@ var ObjectId = mongoose.Types.ObjectId;
 
 var exphbs  = require('express-handlebars');
 var app = express();
-const config = require("./config/config")
 
-if (config.docker) {
+if (process.env.MONGO_PORT_27017_TCP_ADDR && process.env.MONGO_PORT_27017_TCP_PORT) {
 	mongoose.connect('mongodb://'+process.env.MONGO_PORT_27017_TCP_ADDR+':'+process.env.MONGO_PORT_27017_TCP_PORT+'/talos')
 } else {
 	mongoose.connect('localhost/talos')
