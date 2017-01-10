@@ -5,7 +5,7 @@
 sidepane {
 	display: block;
 	position: absolute;
-	overflow: scroll;
+	overflow: auto;
 	top:30px;
 	left:62px;
 	border: 0.5px solid #073B5C;
@@ -14,7 +14,6 @@ sidepane {
 	width: 100px;
 	border-bottom:none;
 	box-shadow: 0px 0px 10px #f2f2f2;
-	overflow-y: scroll;
 
 	me {
 		display: block;
@@ -60,7 +59,7 @@ siteslist {
 	left: 191.5px;
 	width: calc(100vw -  191.5px);
 	height: 100vh;
-	overflow-y: scroll;
+	overflow-y: auto;
 
 	list {
 		display: block;
@@ -92,7 +91,7 @@ siteslist {
 				top: 0px;
 				bottom: 0px;
 				left: 0px;
-				overflow-x: scroll;
+				overflow-x: auto;
 				height: 100%;
 				font-family: "acumin-pro-condensed";
 				font-weight: 100;
@@ -273,7 +272,7 @@ siteslist {
 				width: calc(100% - 60px);
 				padding-left: 30px;
 				padding-right: 30px;
-				overflow-x: scroll;
+				overflow-x: auto;
 				font-family: "source-code-pro";
 				font-weight: 300;
 			}
