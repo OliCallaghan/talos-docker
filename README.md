@@ -14,7 +14,7 @@ Monitor: `docker build -t talos-monitor . -f Dockerfile.monitor`
 Alexa: `docker build -t talos-alexa . -f Dockerfile.alexa`
 
 # Docker runs
-Mongo:  `docker run --rm --name talos-mongo mongo`
+Mongo:  `docker run -d --name talos-mongo mongo`
 UI: `docker run -d -p 3000:3000 --name talos-ui --link talos-mongo:mongo talos-ui`
 Monitor: `docker run -d --name talos-monitor --link talos-mongo:mongo talos-monitor`
 Alexa: `docker run -d -p 3001:3000 --name talos-alexa --link talos-mongo:mongo talos-alexa`
