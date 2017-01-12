@@ -1,7 +1,8 @@
 FROM node:latest
 
-ADD monitor/ /monitor
 WORKDIR /monitor
+ADD monitor/ .
 RUN npm install
+RUN npm install -g nodemon
 
-CMD ["node", "test.js"]
+CMD ["nodemon", "test.js"]

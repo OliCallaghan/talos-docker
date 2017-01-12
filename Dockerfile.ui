@@ -1,9 +1,10 @@
 FROM node:latest
 
-ADD ui/ /ui
 WORKDIR /ui
+ADD ui/ .
 RUN npm install
+RUN npm install -g nodemon
 
 EXPOSE 3000
 
-CMD ["node", "app.js"]
+CMD ["nodemon", "app.js"]

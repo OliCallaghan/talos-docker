@@ -1,0 +1,45 @@
+talos-mongo:
+  image: mongo
+  volumes:
+    - data:/data/db
+  ports:
+    - "27017:27017"
+
+talos-ui:
+  build: .
+  dockerfile: Dockerfile.ui
+  volumes:
+    - ./ui:/ui
+  links:
+    - talos-mongo
+  expose:
+    - 3000
+  ports:
+    - "3000:3000"
+  environment:
+    MONGO_PORT_27017_TCP_ADDR: "talos-mongo"
+    MONGO_PORT_27017_TCP_PORT: "27017"
+
+talos-alexa:
+  build: .
+  dockerfile: Dockerfile.alexa
+  volumes:
+    - ./alexa:/alexa
+  links:
+    - talos-mongo
+  expose:
+    - 3000
+  ports:
+    - "3001:3000"
+  environment:
+    MONGO_PORT_27017_TCP_ADDR: "talos-mongo"
+    MONGO_PORT_27017_TCP_PORT: "27017"
+
+talos-monitor:
+  build: .
+  dockerfile: Dockerfile.monitor
+  links:
+    - talos-mongo
+  environment:
+    MONGO_PORT_27017_TCP_ADDR: "talos-mongo"
+    MONGO_PORT_27017_TCP_PORT: "27017"
