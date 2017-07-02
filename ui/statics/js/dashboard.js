@@ -83,7 +83,10 @@ $(function () {
 			var msg = "confirm"
 			if ($(this).text() == msg) {
 				// TODO: Delete Element
-				alert('delet this');
+				$(this).parent().addClass('remove');
+				setTimeout(function () {
+					$('monitor.remove').remove();
+				}, 500);
 			} else {
 				$(this).text(msg);
 				$(this).addClass('marked');
