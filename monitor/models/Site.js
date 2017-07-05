@@ -12,6 +12,7 @@ const ObjectId = Schema.ObjectId
 const siteSchema = new Schema({
 	user: ObjectId,
 	container: Number,
+	address: String,
 	refreshRate: Number,
 	url: String,
 	displayName: String,
