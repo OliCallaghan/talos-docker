@@ -115,6 +115,7 @@ io.engine.ws = new (require('uws').Server)({
 });
 
 const Site = require("./models/Site")
+const comms = require("./modules/comms.js")
 const site = require("./controllers/site")
 
 function displayName(URL) {
@@ -146,12 +147,20 @@ io.on("connection", function(socket) {
 		params.displayName = displayName(params.url)
 		params.container = 1 // need to stop being hardcoded
 		params.user = ObjectId(params.user)
-		params.refresRate = params.refresRate / 60
+		params.refreshRate = params.refreshRate / 60
 		if (params.url && params.user && params.refreshRate) {
+			console.log(params);
 			site.create(params, function(err, site) {
 				if (err) throw err
-				if (site.duplicate) callback(false, "Duplicate monitor detected")
-				else callback(true, site)
+				if (site.duplicate) {
+					callback(false, "Duplicate monitor detected")
+				} else {
+					// Add to User Container
+					console.log('about to launch monitor');
+					comms.launchNewMonitor(params, function () {
+						callback(true, site);
+					});
+				}
 			})
 		} else {
 			callback(false, "Invalid parameters passed")

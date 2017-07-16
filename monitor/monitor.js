@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Site = require("./controllers/site")
 const url = require('url')
 
-function Me(user, website, interval, callback) {
+function Me(user, website, address, interval, callback) {
 	let self = this
 	self.interval = interval
 
@@ -11,6 +11,7 @@ function Me(user, website, interval, callback) {
 		user: mongoose.Schema.ObjectId(user),
 		container: 1,
 		refreshRate: interval / 60,
+		address: address,
 		url: website,
 		displayName: this.displayName(website),
 		info: {
@@ -26,7 +27,7 @@ function Me(user, website, interval, callback) {
 		callback(err, site)
 	})
 	this.monitor = new Monitor({
-		website: website,
+		website: address,
 		interval: interval / 60
 	})
 
@@ -73,6 +74,10 @@ Me.prototype.updateSiteInfo = function(res, status) {
 			console.log(res.website, "is", status, res.statusCode, res.statusMessage, res.latency + "ms")
 		}
 	})
+}
+
+Me.prototype.remove = function () {
+	self.monitor.stop()
 }
 
 module.exports = Me
