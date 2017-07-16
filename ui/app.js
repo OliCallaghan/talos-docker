@@ -133,47 +133,48 @@ io.on("connection", function(socket) {
 		Site.find({ user: ObjectId(user) }, function(err, sites) {
 			if (err) throw err
 			callback(sites)
+			console.log(sites);
 		})
 	})
 
 	socket.on("create site", function(params, callback) {
 		if (params.protocol != "http" && params.protocol != "https") {
 			console.log('Invalid Protocol');
-		}
-
-		params.url = params.protocol + "://" + params.url;
-
-		params.info = {
-			latency: 0,
-			updatedAt: Date.now(),
-			statusCode: 0,
-			statusMessage: "",
-			status: ""
-		}
-		params.displayName = displayName(params.url)
-		params.container = 1 // need to stop being hardcoded
-		params.user = ObjectId(params.user)
-		params.refreshRate = params.refreshRate / 60
-		if (params.url && params.user && params.refreshRate) {
-			console.log(params);
-			site.create(params, function(err, site) {
-				if (err) throw err
-				if (site.duplicate) {
-					callback(false, "Duplicate monitor detected")
-				} else {
-					// Add to User Container
-					console.log('about to launch monitor');
-					comms.launchNewMonitor(params, function (err) {
-						if (!err) {
-							callback(true, site);
-						} else {
-							console.log('Not enough slaves, need to scale');
-						}
-					});
-				}
-			})
 		} else {
-			callback(false, "Invalid parameters passed")
+			params.url = params.protocol + "://" + params.url;
+
+			params.info = {
+				latency: 0,
+				updatedAt: Date.now(),
+				statusCode: 0,
+				statusMessage: "",
+				status: ""
+			}
+			params.displayName = displayName(params.url)
+			params.container = 1 // need to stop being hardcoded
+			params.user = ObjectId(params.user)
+			params.refreshRate = params.refreshRate / 60
+			if (params.url && params.user && params.refreshRate) {
+				console.log(params);
+				site.create(params, function(err, site) {
+					if (err) throw err
+					if (site.duplicate) {
+						callback(false, "Duplicate monitor detected")
+					} else {
+						// Add to User Container
+						console.log('about to launch monitor');
+						comms.launchNewMonitor(params, function (err) {
+							if (!err) {
+								callback(true, site);
+							} else {
+								console.log('Not enough slaves, need to scale');
+							}
+						});
+					}
+				})
+			} else {
+				callback(false, "Invalid parameters passed")
+			}
 		}
 	})
 });
