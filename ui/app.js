@@ -163,8 +163,12 @@ io.on("connection", function(socket) {
 				} else {
 					// Add to User Container
 					console.log('about to launch monitor');
-					comms.launchNewMonitor(params, function () {
-						callback(true, site);
+					comms.launchNewMonitor(params, function (err) {
+						if (!err) {
+							callback(true, site);
+						} else {
+							console.log('Not enough slaves, need to scale');
+						}
 					});
 				}
 			})
