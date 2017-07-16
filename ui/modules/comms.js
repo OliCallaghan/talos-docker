@@ -26,8 +26,10 @@ module.exports = {
 				url: params.url
 			});
 			slave_i++
+			callback()
 		} else {
 			console.log('Not enough slaves');
+			callback(true)
 		}
 	},
 

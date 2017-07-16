@@ -29,6 +29,7 @@ $(function () {
 	function createSite() {
 		socket.emit("create site", {
 			user: userID,
+			protocol: $('type.selected').attr('protocol'),
 			refreshRate: $('#pollingrate').val() || 5,
 			url: $("#new-name").val()
 		}, function(success, site) {
