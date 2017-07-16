@@ -137,6 +137,12 @@ io.on("connection", function(socket) {
 	})
 
 	socket.on("create site", function(params, callback) {
+		if (params.protocol != "http" && params.protocol != "https") {
+			console.log('Invalid Protocol');
+		}
+
+		params.url = params.protocol + "://" + params.url;
+
 		params.info = {
 			latency: 0,
 			updatedAt: Date.now(),
