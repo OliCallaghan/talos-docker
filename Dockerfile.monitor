@@ -5,4 +5,4 @@ ADD monitor/ .
 RUN npm install
 RUN npm install -g nodemon
 
-CMD ["nodemon", "test.js"]
+CMD ["nodemon", "launch_new.js"]
