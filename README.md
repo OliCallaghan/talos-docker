@@ -1,4 +1,4 @@
-# docker-uptime
+# Talos
 An app monitoring platform written in Node.js and deployed on Docker
 
 # How do I use it?
